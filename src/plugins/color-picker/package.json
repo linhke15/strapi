@@ -1,0 +1,61 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "source": "./admin/src/index.js",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "source": "./server/src/index.js",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@strapi/strapi": "^5.42.1",
+    "@strapi/sdk-plugin": "^6.0.1",
+    "prettier": "^3.8.3",
+    "@strapi/design-system": "^2.0.0-rc.30",
+    "@strapi/icons": "^2.0.0-rc.30",
+    "react-intl": "^6.8.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.4.0"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.42.1",
+    "@strapi/sdk-plugin": "^6.0.1",
+    "@strapi/design-system": "^2.0.0-rc.30",
+    "@strapi/icons": "^2.0.0-rc.30",
+    "react-intl": "^6.8.9",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3",
+    "styled-components": "^6.4.0"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "color-picker",
+    "displayName": "",
+    "description": ""
+  },
+  "name": "color-picker",
+  "description": "",
+  "license": "MIT",
+  "author": "linh_dev <linh.duong@team.enosta.com>"
+}

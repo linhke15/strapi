@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_shared_lists",
+  "info": {
+    "displayName": "list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "subcontent": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

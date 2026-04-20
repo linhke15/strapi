@@ -26,6 +26,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::page.page",
+      "inversedBy": "features"
     }
   }
 }

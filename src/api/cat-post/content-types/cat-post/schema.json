@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cat_posts",
+  "info": {
+    "singularName": "cat-post",
+    "pluralName": "cat-posts",
+    "displayName": "Cat Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "inversedBy": "cat_posts"
+    }
+  }
+}

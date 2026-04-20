@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_logos",
+  "info": {
+    "displayName": "logo"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "link": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

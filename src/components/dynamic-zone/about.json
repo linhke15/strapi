@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_dynamic_zone_abouts",
+  "info": {
+    "displayName": "About"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "boxs": {
+      "type": "component",
+      "component": "shared.list",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

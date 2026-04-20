@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_dynamic_zone_programs",
+  "info": {
+    "displayName": "Program"
+  },
+  "options": {},
+  "attributes": {
+    "Heading": {
+      "type": "string"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

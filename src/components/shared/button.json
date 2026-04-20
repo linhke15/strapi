@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_shared_buttons",
+  "info": {
+    "displayName": "button"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "hasLink"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "hasLink": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}
