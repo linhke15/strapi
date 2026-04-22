@@ -1,5 +1,5 @@
 "use strict";
-
+const clearnResponse = require('./utils/clearn');
 module.exports = {
   /**
    * An asynchronous register function that runs before
@@ -8,7 +8,7 @@ module.exports = {
    * This gives you an opportunity to extend code.
    */
 
-  register(/*{ strapi }*/) {
+  register({ strapi }) {
     // strapi.customFields.register({
     //   name: "color",
     //   plugin: "color-picker",

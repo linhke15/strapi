@@ -642,6 +642,7 @@ export interface ApiLangdingpageLangdingpage extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    header: Schema.Attribute.Component<'shared.header', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -650,7 +651,12 @@ export interface ApiLangdingpageLangdingpage extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     sections: Schema.Attribute.DynamicZone<
-      ['dynamic-zone.hero', 'dynamic-zone.about', 'shared.slider']
+      [
+        'dynamic-zone.hero',
+        'dynamic-zone.about',
+        'shared.slider',
+        'dynamic-zone.program',
+      ]
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -697,12 +703,10 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
   };
   attributes: {
     authors: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
-    button: Schema.Attribute.Component<'shared.button', false>;
     cat_posts: Schema.Attribute.Relation<
       'manyToMany',
       'api::cat-post.cat-post'
     >;
-    content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -16,8 +16,14 @@
       "components": [
         "dynamic-zone.hero",
         "dynamic-zone.about",
-        "shared.slider"
+        "shared.slider",
+        "dynamic-zone.program"
       ]
+    },
+    "header": {
+      "type": "component",
+      "component": "shared.header",
+      "repeatable": false
     }
   }
 }

@@ -30,14 +30,6 @@
         "files"
       ]
     },
-    "content": {
-      "type": "blocks"
-    },
-    "button": {
-      "type": "component",
-      "component": "shared.button",
-      "repeatable": false
-    },
     "authors": {
       "type": "relation",
       "relation": "manyToOne",
