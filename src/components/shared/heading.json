@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_shared_headings",
+  "info": {
+    "displayName": "heading"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "choose"
+            },
+            "h2"
+          ]
+        }
+      }
+    },
+    "Description": {
+      "type": "text"
+    },
+    "choose": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "div",
+        "p"
+      ]
+    }
+  },
+  "config": {}
+}

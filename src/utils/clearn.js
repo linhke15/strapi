@@ -1,19 +1,21 @@
+'use strict';
+
 module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
+    // Ép locale mặc định (Request Middleware)
+    if (ctx.url.startsWith('/api/') && !ctx.query.locale) {
+      ctx.query.locale = 'en';
+    }
+
     await next();
 
-    // const excludePaths = ['/api/posts', '/api/articles/1']; // Thêm các route bạn muốn giữ lại
-    // const isExcluded = excludePaths.some(path => ctx.request.url.startsWith(path));
+    // RESPONSE MIDDLEWARE (Dọn dẹp dữ liệu)
+    if (ctx.body && ctx.body.data && ctx.url.startsWith('/api/')) {
+      const fieldsToRemove = ['createdAt', 'updatedAt', 'publishedAt', 'localizations', 'documentId'];
 
-
-    if (ctx.body && ctx.body.data) {
-      // 1. Danh sách các trường cần xóa sạch khỏi mọi object
-      const fieldsToRemove = ['createdAt', 'updatedAt', 'publishedAt'];
-
-      // 2. Logic làm sạch ảnh riêng theo yêu cầu của bạn
       const cleanImage = (obj) => {
-        if (!obj) return null;
-        return {
+        // Xử lý trường hợp ảnh có formats (responsive)
+        const cleaned = {
           id: obj.id,
           url: obj.url,
           width: obj.width,
@@ -21,27 +23,35 @@ module.exports = (config, { strapi }) => {
           provider: obj.provider,
           caption: obj.caption,
         };
+        // Nếu muốn dọn cả ảnh formats
+        if (obj.formats) {
+            cleaned.formats = {};
+            for (let key in obj.formats) cleaned.formats[key] = cleanImage(obj.formats[key]);
+        }
+        return cleaned;
       };
 
-      // 3. Logic xử lý đệ quy cho toàn bộ object data
       const processData = (data) => {
-        if (Array.isArray(data)) {
-          return data.map(item => processData(item));
+        if (!data || typeof data !== 'object') return data;
+        if (Array.isArray(data)) return data.map(item => processData(item));
+
+        // Nếu có 'attributes', nhảy vào đó để xử lý (Chuẩn Strapi)
+        if (data.attributes) {
+            Object.assign(data, data.attributes);
+            delete data.attributes;
         }
 
-        if (typeof data === 'object' && data !== null) {
-          // Xóa các trường không cần thiết trước
-          fieldsToRemove.forEach(field => delete data[field]);
+        // Xóa field rác
+        fieldsToRemove.forEach(field => delete data[field]);
 
-          // Duyệt qua các key của object
-          for (let key in data) {
-            // Kiểm tra nếu key là logo hoặc images và đó là object ảnh
-            if ((key === 'logo' || key === 'images') && data[key] && typeof data[key] === 'object' && data[key].url) {
-              data[key] = cleanImage(data[key]);
-            } else {
-              // Tiếp tục đệ quy cho các nhánh con
-              data[key] = processData(data[key]);
-            }
+        for (let key in data) {
+          const value = data[key];
+          
+          // Tự động nhận diện ảnh (có url và mime) thay vì check tên key cứng nhắc
+          if (value && typeof value === 'object' && value.url && value.mime) {
+            data[key] = cleanImage(value);
+          } else {
+            data[key] = processData(value);
           }
         }
         return data;

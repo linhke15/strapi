@@ -7,8 +7,8 @@ export interface DynamicZoneAbout extends Struct.ComponentSchema {
   };
   attributes: {
     boxs: Schema.Attribute.Component<'shared.list', true>;
-    description: Schema.Attribute.Text;
-    heading: Schema.Attribute.String;
+    Heading: Schema.Attribute.Component<'shared.heading', false>;
+    thumb: Schema.Attribute.Media<'images' | 'files', true>;
   };
 }
 
@@ -30,8 +30,31 @@ export interface DynamicZoneProgram extends Struct.ComponentSchema {
     displayName: 'Program';
   };
   attributes: {
-    background: Schema.Attribute.Media<'images' | 'files'>;
-    Heading: Schema.Attribute.String;
+    button: Schema.Attribute.Component<'shared.button', false>;
+    Heading2: Schema.Attribute.Component<'shared.heading', false>;
+    Video: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface DynamicZoneSectionAnswers extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_zone_section_answers';
+  info: {
+    displayName: 'section-answers';
+  };
+  attributes: {
+    Accessories: Schema.Attribute.Component<'shared.accordion', true>;
+    HeadingFAQ: Schema.Attribute.Component<'shared.heading', false>;
+  };
+}
+
+export interface DynamicZoneTabs extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_zone_tabs';
+  info: {
+    displayName: 'tabs';
+  };
+  attributes: {
+    tabContent: Schema.Attribute.Component<'shared.tab-content', true>;
+    titleTab: Schema.Attribute.String;
   };
 }
 
@@ -43,6 +66,17 @@ export interface DynamicZoneTestimonial extends Struct.ComponentSchema {
   attributes: {};
 }
 
+export interface SharedAccordion extends Struct.ComponentSchema {
+  collectionName: 'components_shared_accordions';
+  info: {
+    displayName: 'accordion';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface SharedButton extends Struct.ComponentSchema {
   collectionName: 'components_shared_buttons';
   info: {
@@ -52,6 +86,8 @@ export interface SharedButton extends Struct.ComponentSchema {
     hasLink: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     icon: Schema.Attribute.Media<'images' | 'files'>;
     link: Schema.Attribute.String;
+    style: Schema.Attribute.Enumeration<['defaule', 'style2', 'style3']> &
+      Schema.Attribute.DefaultTo<'defaule'>;
     text: Schema.Attribute.String;
   };
 }
@@ -76,9 +112,24 @@ export interface SharedHeader extends Struct.ComponentSchema {
     displayName: 'header';
   };
   attributes: {
-    contact: Schema.Attribute.Component<'shared.button', false>;
     logo: Schema.Attribute.Component<'shared.logo', false>;
     menu: Schema.Attribute.Component<'shared.button', true>;
+  };
+}
+
+export interface SharedHeading extends Struct.ComponentSchema {
+  collectionName: 'components_shared_headings';
+  info: {
+    displayName: 'heading';
+  };
+  attributes: {
+    choose: Schema.Attribute.Enumeration<
+      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p']
+    > &
+      Schema.Attribute.DefaultTo<'h2'>;
+    Description: Schema.Attribute.Text;
+    subtitle: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
   };
 }
 
@@ -180,16 +231,33 @@ export interface SharedSoical extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedTabContent extends Struct.ComponentSchema {
+  collectionName: 'components_shared_tab_contents';
+  info: {
+    displayName: 'tabContent';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    images: Schema.Attribute.Media<'images' | 'files'>;
+    subtitle: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'dynamic-zone.about': DynamicZoneAbout;
       'dynamic-zone.hero': DynamicZoneHero;
       'dynamic-zone.program': DynamicZoneProgram;
+      'dynamic-zone.section-answers': DynamicZoneSectionAnswers;
+      'dynamic-zone.tabs': DynamicZoneTabs;
       'dynamic-zone.testimonial': DynamicZoneTestimonial;
+      'shared.accordion': SharedAccordion;
       'shared.button': SharedButton;
       'shared.footer': SharedFooter;
       'shared.header': SharedHeader;
+      'shared.heading': SharedHeading;
       'shared.list': SharedList;
       'shared.logo': SharedLogo;
       'shared.media': SharedMedia;
@@ -198,6 +266,7 @@ declare module '@strapi/strapi' {
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
       'shared.soical': SharedSoical;
+      'shared.tab-content': SharedTabContent;
     }
   }
 }

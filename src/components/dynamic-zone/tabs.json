@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_dynamic_zone_tabs",
+  "info": {
+    "displayName": "tabs"
+  },
+  "options": {},
+  "attributes": {
+    "titleTab": {
+      "type": "string"
+    },
+    "tabContent": {
+      "type": "component",
+      "component": "shared.tab-content",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

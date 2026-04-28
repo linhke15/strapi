@@ -16,9 +16,12 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
+    "@strapi/admin": "^5.42.1",
+    "@strapi/content-manager": "^5.42.1",
+    "@strapi/content-type-builder": "^5.42.1",
     "@strapi/plugin-cloud": "5.42.1",
     "@strapi/plugin-users-permissions": "5.42.1",
-    "@strapi/strapi": "5.42.1",
+    "@strapi/strapi": "^5.41.0",
     "better-sqlite3": "12.8.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
@@ -27,7 +30,6 @@
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"

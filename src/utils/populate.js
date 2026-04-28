@@ -12,9 +12,7 @@ const globalPopulate = {
 
                 populate: '*'
             },
-            contact: {
-                populate: '*'               
-            }
+          
         }
     },
       footer: {
@@ -31,6 +29,12 @@ const globalPopulate = {
      
       
 }
+const categoryPopulate = {
+  programs: { populate: '*' },
+  layout: { populate: '*' }, 
+  parent: { populate: '*' },
+  childrent: { populate: '*' }
+};
 const commoComponent = {
     button:{populate:'*'},
     seo: { populate: '*' }
@@ -48,5 +52,6 @@ const landingPagePopulate = {
 
 module.exports = {
   globalPopulate,
-  landingPagePopulate
+landingPagePopulate,
+  categoryPopulate
 };

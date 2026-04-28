@@ -1,5 +1,10 @@
 module.exports = (config, { strapi }) => {
   return async (ctx, next) => {
+
+    if (ctx.url.startsWith('/api/') && !ctx.query.locale) {
+      ctx.query.locale = 'en';
+    }
+  
     await next();
 
     // 1. CHỈ chạy middleware nếu request bắt đầu bằng /api/

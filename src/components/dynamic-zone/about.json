@@ -5,11 +5,18 @@
   },
   "options": {},
   "attributes": {
-    "heading": {
-      "type": "string"
+    "Heading": {
+      "type": "component",
+      "component": "shared.heading",
+      "repeatable": false
     },
-    "description": {
-      "type": "text"
+    "thumb": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "boxs": {
       "type": "component",

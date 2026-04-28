@@ -32,6 +32,15 @@
     "hasLink": {
       "type": "boolean",
       "default": true
+    },
+    "style": {
+      "type": "enumeration",
+      "default": "defaule",
+      "enum": [
+        "defaule",
+        "style2",
+        "style3"
+      ]
     }
   },
   "config": {}

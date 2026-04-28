@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_programs",
+  "info": {
+    "singularName": "category-program",
+    "pluralName": "category-programs",
+    "displayName": "Category Program"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "programs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::program.program",
+      "inversedBy": "category"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "layout": {
+      "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category-program.category-program",
+      "inversedBy": "childrent"
+    },
+    "childrent": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category-program.category-program",
+      "mappedBy": "parent"
+    }
+  }
+}

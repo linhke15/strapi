@@ -5,16 +5,25 @@
   },
   "options": {},
   "attributes": {
-    "Heading": {
-      "type": "string"
+    "Heading2": {
+      "type": "component",
+      "component": "shared.heading",
+      "repeatable": false
     },
-    "background": {
+    "Video": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images",
-        "files"
+        "files",
+        "videos",
+        "audios"
       ]
+    },
+    "button": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
     }
   },
   "config": {}
